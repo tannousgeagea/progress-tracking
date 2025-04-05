@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  progress-tracking:
+    container_name: progress-tracking
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tannousgeagea/progress-tracking:latest
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    network_mode: host
+    env_file: .env
